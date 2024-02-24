@@ -1,4 +1,4 @@
 import categoriesDAO from "./categories.js";
-import productDAO from "./product.js";
+import imageDAO from "./image.js";
 
-export { categoriesDAO, productDAO };
+export { categoriesDAO, imageDAO };

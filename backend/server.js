@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import * as dotenv from "dotenv";
 import connectDB from "./database.js";
-import {categoriesRouter, productRouter} from "./routes/index.js";
+import { categoriesRouter } from "./routes/index.js";
 
 const app = express();
 app.use(express.json());
@@ -16,8 +16,6 @@ app.get("/", (res, req) => {
 });
 
 app.use(`/categories`, categoriesRouter);
-
-app.use('/products', productRouter);
 
 app.listen(PORT, async () => {
   connectDB();
