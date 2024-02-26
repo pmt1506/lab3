@@ -15,7 +15,7 @@ const getAllCategories = async (req, res) => {
 
 //create a new category 
 
-export const createCategory = async (req, res) => {
+const createCategory = async (req, res) => {
   try {
     const result = await categoriesDAO.createCategory(req.body);
     res.status(201).json({

@@ -69,7 +69,6 @@ const addCommentToProduct = async (pid, comment) => {
       },
       { new: true }
     );
-    console.log(updatedProduct);
     return updatedProduct;
   } catch (error) {
     throw new Error(error.toString());

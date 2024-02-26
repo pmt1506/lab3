@@ -4,9 +4,8 @@ const createComment = async (req, res) => {
   const { text, pid } = req.body;
 
   try {
-    const product = await productDAO.getProductByID(pid);
+    const product = await productDAO.getProductDetail(pid);
     if (!product) {
-      res.status(404).json({ message: "Product doesnt exist" });
       return;
     }
     const result = await commentDAO.createComment(text);

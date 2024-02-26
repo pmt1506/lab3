@@ -40,6 +40,7 @@ const Add = () => {
       ...prevFormData,
       [name]: value,
     }));
+    console.log({ object: name, value });
   };
 
   const handleImageChange = (e) => {
@@ -165,7 +166,9 @@ const Add = () => {
             name="category"
             value={formData.category}
             onChange={handleInputChange}
+            required
           >
+            <option value="" disabled>Select a category</option>
             {categories.map((category, index) => (
               <option key={index} value={category._id}>
                 {category.name}
