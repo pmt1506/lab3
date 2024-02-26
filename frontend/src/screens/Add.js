@@ -104,8 +104,6 @@ const Add = () => {
         body: JSON.stringify(formData),
       });
 
-      console.log(formData);
-
       if (response.ok) {
         // Handle success, e.g., redirect or show a success message
         console.log("Product added successfully!");
