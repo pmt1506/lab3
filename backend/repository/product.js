@@ -17,7 +17,7 @@ const addProduct = async ({ name, description, price, category, images }) => {
       });
 
       imagesInfo.push({
-        imageId,
+        url: file.url,
         caption: file.caption,
         size: file.size,
       });
@@ -51,4 +51,15 @@ const getAllProducts = async () => {
 
 // get product detail
 
-export default { addProduct, getAllProducts };
+const getProductDetail = async (id) => {
+  try {
+    const product = await Product.findById(id).populate("category").exec();
+    return product._doc;
+  } catch (error) {
+    throw new Error(error.toString());
+  }
+};
+
+//delete product and its image
+
+export default { addProduct, getAllProducts, getProductDetail };

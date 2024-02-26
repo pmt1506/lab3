@@ -37,7 +37,9 @@ const Home = () => {
               {products.map((product, index) => (
                 <tr key={index}>
                   <th scope="row">{index + 1}</th>
-                  <td>{product.name}</td>
+                  <td>
+                    <Link to={"/" + product._id}>{product.name}</Link>
+                  </td>
                   <td>{product.price}</td>
                   <td>{product.category.name}</td>
                 </tr>

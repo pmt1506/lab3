@@ -7,17 +7,19 @@ const addProduct = async (req, res) => {
     const { name, description, price, category } = req.body;
 
     const images = req.body.images.map((file) => ({
-      url: file.url,
+      url: file.base64,
       caption: file.name,
       size: file.size,
     }));
+
+    console.log(images);
 
     const newProduct = await productDAO.addProduct({
       name,
       description,
       price,
       category,
-      images,
+      images: images,
     });
 
     res.status(201).json(newProduct);
@@ -40,7 +42,23 @@ const getAllProducts = async (req, res) => {
   }
 };
 
+//get product detail
+
+const getProductDetail = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const product = await productDAO.getProductDetail(id);
+
+    res.status(200).json(product);
+  } catch (error) {
+    console.error("Error fetching product:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
 export default {
   addProduct,
   getAllProducts,
+  getProductDetail,
 };
