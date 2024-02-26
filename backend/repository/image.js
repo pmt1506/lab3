@@ -1,4 +1,4 @@
-import Image from "../models/image.js";
+import Image from "../model/image.js";
 
 //create image
 

@@ -1,4 +1,6 @@
 import mongoose, { Schema } from "mongoose";
+import { imageSchema } from "./image.js";
+import { commentSchema } from "./comment.js";
 
 const productSchema = new Schema(
   {
@@ -15,26 +17,16 @@ const productSchema = new Schema(
       type: String,
       required: true,
     },
-    images: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Image",
-      },
-    ],
-    comments: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Comment",
-      },
-    ],
+    images: [imageSchema],
+    comments: [commentSchema],
     category: {
       type: Schema.Types.ObjectId,
-      ref: "Category",
+      ref: "categories",
     },
   },
   { timestamps: true }
 );
 
-const Product = mongoose.model("Product", productSchema);
+const Product = mongoose.model("products", productSchema);
 
 export default Product;

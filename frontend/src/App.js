@@ -1,6 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Add from "./screens/Add";
+import Detail from "./screens/Detail";
 
 function App() {
   return (
@@ -8,7 +9,8 @@ function App() {
     //   <Routes>
     //   </Routes>
     // </BrowserRouter>
-    <Add/>
+    // <Add/>
+    <Detail/>
   );
 }
 

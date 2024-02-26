@@ -2,11 +2,9 @@ import express from "express";
 import cors from "cors";
 import * as dotenv from "dotenv";
 import connectDB from "./database.js";
-import { categoriesRouter } from "./routes/index.js";
+import { categoriesRouter, productRouter } from "./routes/index.js";
 
 const app = express();
-app.use(express.json());
-app.use(cors());
 dotenv.config();
 
 // Set up CORS headers
@@ -19,14 +17,19 @@ app.use((req, res, next) => {
   next();
 });
 
+// Increase the payload size limit to 50 megabytes
 app.use(express.json({ limit: "50mb" }));
+app.use(cors());
+
 const PORT = process.env.PORT;
 
-app.get("/", (res, req) => {
+app.get("/", (req, res) => {
   res.send("welcome kkk");
 });
 
 app.use(`/categories`, categoriesRouter);
+
+app.use("/products", productRouter);
 
 app.listen(PORT, async () => {
   connectDB();

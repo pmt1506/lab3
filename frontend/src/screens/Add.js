@@ -89,11 +89,31 @@ const Add = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Save form data when the form is submitted
-    console.log("Form Data:", formData);
+    try {
+      // Send formData to the backend API endpoint /products/add
+      const response = await fetch("http://localhost:9999/products/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      console.log(formData);
+
+      if (response.ok) {
+        // Handle success, e.g., redirect or show a success message
+        console.log("Product added successfully!");
+      } else {
+        // Handle error, e.g., show an error message
+        console.error("Error adding product:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error adding product:", error);
+    }
   };
 
   return (
@@ -144,9 +164,8 @@ const Add = () => {
             value={formData.category}
             onChange={handleInputChange}
           >
-            <option value="">Select a category</option>
             {categories.map((category, index) => (
-              <option key={index} value={category.name}>
+              <option key={index} value={category._id}>
                 {category.name}
               </option>
             ))}

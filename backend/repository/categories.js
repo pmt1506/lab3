@@ -1,4 +1,4 @@
-import Categories from "../models/categories.js";
+import Categories from "../model/categories.js";
 
 //list all categories
 
