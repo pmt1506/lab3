@@ -12,8 +12,6 @@ const addProduct = async (req, res) => {
       size: file.size,
     }));
 
-    console.log(images);
-
     const newProduct = await productDAO.addProduct({
       name,
       description,

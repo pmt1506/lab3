@@ -60,6 +60,23 @@ const getProductDetail = async (id) => {
   }
 };
 
+const addCommentToProduct = async (pid, comment) => {
+  try {
+    const updatedProduct = await Product.findByIdAndUpdate(
+      pid,
+      {
+        $push: { comments: comment },
+      },
+      { new: true }
+    );
+    console.log(updatedProduct);
+    return updatedProduct;
+  } catch (error) {
+    throw new Error(error.toString());
+  }
+};
+
+
 //delete product and its image
 
-export default { addProduct, getAllProducts, getProductDetail };
+export default { addProduct, getAllProducts, getProductDetail, addCommentToProduct };

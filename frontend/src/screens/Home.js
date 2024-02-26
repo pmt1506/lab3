@@ -38,7 +38,7 @@ const Home = () => {
                 <tr key={index}>
                   <th scope="row">{index + 1}</th>
                   <td>
-                    <Link to={"/" + product._id}>{product.name}</Link>
+                    <Link to={"/detail/" + product._id}>{product.name}</Link>
                   </td>
                   <td>{product.price}</td>
                   <td>{product.category.name}</td>

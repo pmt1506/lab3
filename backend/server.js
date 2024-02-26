@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import * as dotenv from "dotenv";
 import connectDB from "./database.js";
-import { categoriesRouter, productRouter } from "./routes/index.js";
+import { accountRouter, categoriesRouter, productRouter, commentRouter } from "./routes/index.js";
 
 const app = express();
 dotenv.config();
@@ -30,6 +30,10 @@ app.get("/", (req, res) => {
 app.use(`/categories`, categoriesRouter);
 
 app.use("/products", productRouter);
+
+app.use("/accounts", accountRouter);
+
+app.use(`/comments`, commentRouter);
 
 app.listen(PORT, async () => {
   connectDB();
