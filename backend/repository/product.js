@@ -42,11 +42,13 @@ const addProduct = async ({ name, description, price, category, images }) => {
 
 const getAllProducts = async () => {
   try {
-    const allProducts = await Product.find();
+    const allProducts = await Product.find().populate("category").exec();
     return allProducts.map((product) => product._doc);
   } catch (error) {
     throw new Error(error.toString());
   }
 };
+
+// get product detail
 
 export default { addProduct, getAllProducts };

@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Add = () => {
   // Fetch categories list from localhost:9999/categories
   const [categories, setCategories] = useState([]);
   const [imagesInfo, setImagesInfo] = useState([]);
+  const [message, setMessage] = useState([]);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -107,9 +109,11 @@ const Add = () => {
       if (response.ok) {
         // Handle success, e.g., redirect or show a success message
         console.log("Product added successfully!");
+        setMessage("Product added successfully!");
       } else {
         // Handle error, e.g., show an error message
         console.error("Error adding product:", response.statusText);
+        setMessage("Error adding product: " + response.statusText);
       }
     } catch (error) {
       console.error("Error adding product:", error);
@@ -117,7 +121,7 @@ const Add = () => {
   };
 
   return (
-    <div className="container">
+    <div>
       <h1 className="text-center">Add new Product</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -198,10 +202,14 @@ const Add = () => {
             ))}
           </div>
         )}
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-success mr-1">
           Submit
         </button>
+        <Link to="/" className="btn btn-primary">
+          Back
+        </Link>
       </form>
+      <p>{message}</p>
     </div>
   );
 };

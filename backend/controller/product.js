@@ -7,7 +7,7 @@ const addProduct = async (req, res) => {
     const { name, description, price, category } = req.body;
 
     const images = req.body.images.map((file) => ({
-      url: file.url, // Adjust this based on your image model
+      url: file.url,
       caption: file.name,
       size: file.size,
     }));

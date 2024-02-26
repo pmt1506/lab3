@@ -2,7 +2,7 @@ import React from "react";
 
 const Detail = () => {
   return (
-    <div className="container">
+    <div>
       <h1 className="text-center">Detail</h1>
       <div className="row">
         <div className="col-4">
